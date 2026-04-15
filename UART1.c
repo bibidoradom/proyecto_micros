@@ -4,6 +4,7 @@
 
 // 1) defines
 #define TAM_COLA 100
+#define TAM_ORDEN 20
 
 // 2) estructura de cola
 
@@ -156,3 +157,31 @@ void putsUART(char s[]){
 //La cabeza escribe el dato nuevo y la cola lee el dato más antiguo; 
 //en RX escribe la ISR y lee el programa, 
 //y en TX escribe el programa y lee la ISR
+
+
+void recibirOrden(){
+    
+    char c;
+    char orden[TAM_ORDEN];
+    int i = 0;
+    
+    c = getcUART();
+
+        if(c != '\0')
+        {
+            if(c == '\n')        // fin de orden
+            {
+                orden[i] = '\0'; // terminar string
+                ProcesaOrden(orden);
+                i = 0;           // reiniciar buffer
+            }
+            else
+            {
+                if(i < TAM_ORDEN-1)
+                {
+                    orden[i] = c;
+                    i++;
+                }
+            }
+        }
+}
