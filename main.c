@@ -4,15 +4,18 @@
 #include "BitWhacker.h"
 #include "config.h"
 
+static int pulsador_ant, pulsador_act;
 
 int main(void)
 { 
     int pedido_recibido = 0;
     int temperatura_agua = 2;
+    int pulsador_ant, pulsador_act, agua_echada;
     
     enum {Inicio, Espera_Datos, Comprobaciones, Calentar_Agua, Echar_Agua, Echar_Cafe, 
     Echar_Azucar, Terminar_Remover, Servir_Cafe, Pausa, Fin_Cafe, Error} estado;
     
+    estado = Inicio;
 
     // Habilitar interrupciones
     INTCONbits.MVEC = 1;
@@ -25,7 +28,7 @@ int main(void)
         // Presionas pulsador
         pulsador_act = (PORTB >> PIN_PULSADOR) & 1;
         
-        if ((pulsador_act != pulsador_act) && (pulsador_act == 0)){
+        if ((pulsador_ant != pulsador_act) && (pulsador_act == 0)){
             pedido_recibido = 1;
         }
         
@@ -41,6 +44,8 @@ int main(void)
             case Espera_Datos:
                 if (pedido_recibido == 1){
                     reiniciarFlagsT3();
+                    initTimer3();
+                    initServos();
                     estado = Comprobaciones;
                 }
                 break;
@@ -71,10 +76,7 @@ int main(void)
                 break;
         }
         
-      
-        if (estado == Inicio){
-            LATCCLR = 1 << PIN_LED_APAGADO;
-        }
+
         
         if (estado == Espera_Datos){
             recibirOrden(); 
@@ -83,8 +85,9 @@ int main(void)
         
         if (estado == Comprobaciones){
             desactivarReceptor();
+            abrirServoAzucar();
             // temperatura_agua = leerADC
-            if (getFlagsT3 == 6){
+            if (getFlagsT3() == 1){
                 temperatura_agua = 1;
             }
             LATCSET = 1 << PIN_LED_APAGADO;
@@ -93,9 +96,10 @@ int main(void)
         
         if (estado == Echar_Agua){
             valvulaON();
+            cerrarServoAzucar();
             LATCSET = 1 << PIN_LED_PREPARACION;
             LATCCLR = 1 << PIN_LED_LISTO; 
-            ig (getFlagsT3 == 6){
+            if (getFlagsT3() == 10){
                 valvulaOFF();
                 agua_echada = 1;
                 

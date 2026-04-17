@@ -44,7 +44,7 @@ void cerrarServoCafe(void){
 }
 
 void abrirServoAzucar(void){
-    int t_alto = 3500; // A modificar para ver cuanto azúcar queremos que pase
+    int t_alto = 1900; // A modificar para ver cuanto azúcar queremos que pase
     OC3RS = t_alto;
 }
 void cerrarServoAzucar(void){

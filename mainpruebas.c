@@ -7,12 +7,10 @@ int main(void) {
     
     int pulsador_ant, pulsador_act;
     int abierto = 0;
-
-    ANSELC = 0;
-    ANSELB = 0;
     
-    TRISC = 0;
-    TRISB |= 1<<5;
+    initPines();
+    initTimer2();
+    initServos();
     
     pulsador_ant = (PORTB >> PIN_PULSADOR) & 1;
     
@@ -30,10 +28,12 @@ int main(void) {
                 motorON();
                 bombaON();
                 calefactorON();
+                abrirServoAzucar();
                 abierto = 1;
             } else {
                 LATCSET = 1 << 1;
                 apagarTodo();
+                cerrarServoAzucar();
                 abierto = 0;
             }
             
@@ -42,4 +42,3 @@ int main(void) {
         pulsador_ant = pulsador_act;
     }
 }
-

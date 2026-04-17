@@ -11,6 +11,7 @@
       <itemPath>actuadores.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>timers.h</itemPath>
+      <itemPath>Pic32Ini.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -33,6 +34,7 @@
       <itemPath>mainpruebas.c</itemPath>
       <itemPath>config.c</itemPath>
       <itemPath>timers.c</itemPath>
+      <itemPath>Pic32Ini.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

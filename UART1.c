@@ -126,8 +126,6 @@ void putsUART(char s[]){
 }
 
 void recibirOrden(void){
-    
-    void recibirOrden(){
 
     if(rx_flag){
         rx_flag = 0;

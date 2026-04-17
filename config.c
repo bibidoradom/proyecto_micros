@@ -11,7 +11,10 @@ void initPines(void){
    TRISA = 0;
    TRISA |= 1 << PIN_SENSOR_TEMPERATURA;
    TRISB = 0;
+   TRISB |= 1 << PIN_PULSADOR;
    TRISB |= 1 << PIN_SENSOR_PRESENCIA;
    TRISC = 0;
+   
+   LATC = 0xF;
 
 }

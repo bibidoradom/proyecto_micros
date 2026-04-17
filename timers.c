@@ -5,7 +5,7 @@
 static flagsT3 = 0;
 
 void initTimers(void){
-    initTimer1();
+    // initTimer1();
     initTimer2();
     initTimer3();
 }
@@ -42,9 +42,18 @@ void initTimer3(void){
 
 void __attribute__((vector(12), interrupt(IPL2SOFT), nomips16)) 
 InterrupcionTimer3(void){
+    IFS0bits.T3IF = 0;
     flagsT3 ++;
 }
 
 void reiniciarFlagsT3(void){
     flagsT3 = 0;
+    TMR3 = 0;
+}
+
+int getFlagsT3(void){
+    asm("ei");
+    int flags = flagsT3;
+    asm("di");
+    return flags;
 }
