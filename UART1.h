@@ -4,5 +4,7 @@
 void InicializarUART1(int baudios);
 void putsUART(char s[]);
 char getcUART(void);
+void recibirOrden(void);
+void desactivarReceptor(void);
 
 #endif
