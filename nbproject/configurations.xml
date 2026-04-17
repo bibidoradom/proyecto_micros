@@ -10,6 +10,7 @@
       <itemPath>BitWhacker.h</itemPath>
       <itemPath>actuadores.h</itemPath>
       <itemPath>config.h</itemPath>
+      <itemPath>timers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -31,6 +32,7 @@
       <itemPath>actuadores.c</itemPath>
       <itemPath>mainpruebas.c</itemPath>
       <itemPath>config.c</itemPath>
+      <itemPath>timers.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -215,7 +217,24 @@
       <Simulator>
         <property key="periphADC1.minTacq" value="132"/>
       </Simulator>
+      <Tool>
+        <property key="periphADC1.minTacq" value="132"/>
+      </Tool>
       <item path="main.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
     </conf>
   </confs>

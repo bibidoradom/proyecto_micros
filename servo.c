@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "servo.h"
+#include "timers.h"
 
 void initServos(void){
     
@@ -28,6 +29,8 @@ void initServos(void){
     OC3CON = 0x8006;  // Modo PWM sin fallos (OCM = 110)
 
     OC3CON |= (1 << 15);  // ON = 1, activar OC
+    
+    initTimer2();
 }
 
 

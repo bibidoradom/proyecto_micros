@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=servo.c sensores.c UART1.c BitWhacker.c actuadores.c mainpruebas.c config.c
+SOURCEFILES_QUOTED_IF_SPACED=servo.c sensores.c UART1.c BitWhacker.c actuadores.c mainpruebas.c config.c timers.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/servo.o ${OBJECTDIR}/sensores.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/BitWhacker.o ${OBJECTDIR}/actuadores.o ${OBJECTDIR}/mainpruebas.o ${OBJECTDIR}/config.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/servo.o.d ${OBJECTDIR}/sensores.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/BitWhacker.o.d ${OBJECTDIR}/actuadores.o.d ${OBJECTDIR}/mainpruebas.o.d ${OBJECTDIR}/config.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/servo.o ${OBJECTDIR}/sensores.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/BitWhacker.o ${OBJECTDIR}/actuadores.o ${OBJECTDIR}/mainpruebas.o ${OBJECTDIR}/config.o ${OBJECTDIR}/timers.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/servo.o.d ${OBJECTDIR}/sensores.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/BitWhacker.o.d ${OBJECTDIR}/actuadores.o.d ${OBJECTDIR}/mainpruebas.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/timers.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/servo.o ${OBJECTDIR}/sensores.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/BitWhacker.o ${OBJECTDIR}/actuadores.o ${OBJECTDIR}/mainpruebas.o ${OBJECTDIR}/config.o
+OBJECTFILES=${OBJECTDIR}/servo.o ${OBJECTDIR}/sensores.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/BitWhacker.o ${OBJECTDIR}/actuadores.o ${OBJECTDIR}/mainpruebas.o ${OBJECTDIR}/config.o ${OBJECTDIR}/timers.o
 
 # Source Files
-SOURCEFILES=servo.c sensores.c UART1.c BitWhacker.c actuadores.c mainpruebas.c config.c
+SOURCEFILES=servo.c sensores.c UART1.c BitWhacker.c actuadores.c mainpruebas.c config.c timers.c
 
 
 
@@ -143,6 +143,12 @@ ${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/c6883f5b5268aa09
 	@${RM} ${OBJECTDIR}/config.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/config.o.d" -o ${OBJECTDIR}/config.o config.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/timers.o: timers.c  .generated_files/flags/default/cd24ec8c719ecd3696793e7ff142a14e79c7200a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/timers.o.d 
+	@${RM} ${OBJECTDIR}/timers.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/timers.o.d" -o ${OBJECTDIR}/timers.o timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/servo.o: servo.c  .generated_files/flags/default/afb5308af012a05ebfd65dccdb63fb5196f91e35 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -185,6 +191,12 @@ ${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/6bcde124fe4cab95
 	@${RM} ${OBJECTDIR}/config.o.d 
 	@${RM} ${OBJECTDIR}/config.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/config.o.d" -o ${OBJECTDIR}/config.o config.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/timers.o: timers.c  .generated_files/flags/default/efc9ec3f0c693ff0419c6d1434e9e58f3cdcf3d2 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/timers.o.d 
+	@${RM} ${OBJECTDIR}/timers.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/timers.o.d" -o ${OBJECTDIR}/timers.o timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
