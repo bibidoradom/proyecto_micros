@@ -2,7 +2,9 @@
 #include "sensores.h"
 #include "config.h"
 
-void initSensores(void);
+void initSensores(void){
+    
+}
 
 int leerSensorIR(void){
     // 1 si hay vaso, 0 si no hay vaso

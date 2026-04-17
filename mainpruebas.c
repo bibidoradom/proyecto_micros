@@ -15,6 +15,8 @@ int main(void) {
     
     pulsador_ant = (PORTB >> 5) & 1;
     
+    apagarTodo();
+    
     while(1){
         
         // Leer Sensor Presencia

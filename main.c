@@ -7,7 +7,10 @@
 int main(void)
 {
     
-    int i = 0;
+    enum {Inicio, Espera_Datos, Comprobaciones, Calentar_Agua, Echar_Agua, Echar_Cafe, 
+    Echar_Azucar, Terminar_Remover, Servir_Cafe, Pausa, Fin_Cafe, Error} estado;
+    
+    
 
     InicializarUART1(9600);
 
@@ -19,14 +22,18 @@ int main(void)
     ANSELB = 0x0;
     ANSELC = 0x0;
     
+    
+    
     while(1)
     {
         
-        
-        // CAMBIAR ESTE CÓDIGO DE A CONTINUACIÓN AL ARCHIVO UART1.h A UNA FUNCIÓN QUE SEA "recibirOrden" PARA QUE CUADRE CON LOS ESQUEMAS
-        // AQUÍ MÁQUINA DE ESTADOS
-        
-        
+        switch(estado){
+            case Inicio:
+                if (){
+                    estado = 
+                }
+        }
+       
     }
 }
 
