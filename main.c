@@ -4,8 +4,11 @@
 #include "BitWhacker.h"
 #include "config.h"
 
+
 int main(void)
-{
+{ 
+    int pedido_recibido = 0;
+    int temperatura_agua = 2;
     
     enum {Inicio, Espera_Datos, Comprobaciones, Calentar_Agua, Echar_Agua, Echar_Cafe, 
     Echar_Azucar, Terminar_Remover, Servir_Cafe, Pausa, Fin_Cafe, Error} estado;
@@ -37,6 +40,7 @@ int main(void)
                 
             case Espera_Datos:
                 if (pedido_recibido == 1){
+                    reiniciarFlagsT3();
                     estado = Comprobaciones;
                 }
                 break;
@@ -44,6 +48,7 @@ int main(void)
             case Comprobaciones:
                 
                 if (temperatura_agua == 1){
+                    reiniciarFlagsT3();
                     estado = Echar_Agua;
                 }
                 if (temperatura_agua == 0){
@@ -53,12 +58,14 @@ int main(void)
             
             case Echar_Agua:
                 if (agua_echada == 1){
+                    reiniciarFlagsT3();
                     estado = Echar_Cafe;
                 }
                 break;
                 
             case Calentar_Agua:
-                if (temperatura_agua == ){
+                if (temperatura_agua == 1){
+                    reiniciarFlagsT3();
                     estado = Echar_Agua;
                 }
                 break;
@@ -76,14 +83,23 @@ int main(void)
         
         if (estado == Comprobaciones){
             desactivarReceptor();
-            temperatura_agua = leerADC
+            // temperatura_agua = leerADC
+            if (getFlagsT3 == 6){
+                temperatura_agua = 1;
+            }
             LATCSET = 1 << PIN_LED_APAGADO;
             LATCCLR = 1 << PIN_LED_PREPARACION;
         }
         
         if (estado == Echar_Agua){
+            valvulaON();
             LATCSET = 1 << PIN_LED_PREPARACION;
             LATCCLR = 1 << PIN_LED_LISTO; 
+            ig (getFlagsT3 == 6){
+                valvulaOFF();
+                agua_echada = 1;
+                
+            }
         }
         
         if (estado == Calentar_Agua){

@@ -2,6 +2,8 @@
 #include "Pic32Ini.h"
 #include "timers.h"
 
+static flagsT3 = 0;
+
 void initTimers(void){
     initTimer1();
     initTimer2();
@@ -30,5 +32,19 @@ void initTimer3(void){
     PR3 = 39062;
     T3CON |= (6 << 4); // Pre-escalado = 1:64 (TCKPS = 110)
     
+    IFS0bits.T3IF = 0;
+    IEC0bits.T3IE = 1;
+    IPC3bits.T3IP = 2;// Prioridad 2
+    IPC3bits.T3IS = 0; //subprioridad 0
+    
     T3CON |= (1<<15); //TIMER3 ON = 1
+}
+
+void __attribute__((vector(12), interrupt(IPL2SOFT), nomips16)) 
+InterrupcionTimer3(void){
+    flagsT3 ++;
+}
+
+void reiniciarFlagsT3(void){
+    flagsT3 = 0;
 }
